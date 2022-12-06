@@ -1,3 +1,4 @@
+import Search from "./Search/Search"
 import { StyledMenu } from "./StyledNav"
 
 
@@ -5,8 +6,9 @@ export const Navbar = ()=>{
     return(
         <StyledMenu>
             <div>
-            <Logo/>
-        </div>
+              <Logo/>
+            </div>
+            <Search/>
         </StyledMenu>
         
     )

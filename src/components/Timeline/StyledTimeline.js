@@ -44,4 +44,13 @@ export const StyledTimeline = styled.div`
       }
     }
   }
+  a {
+    text-decoration: none;
+    opacity: 1;
+    transition: .3s;
+    &:hover,
+    &:focus {
+      opacity: .5;
+    }
+  }
 `;
