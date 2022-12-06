@@ -1,9 +1,9 @@
-import config from "../../config.json"
+
 import { StyledMenu } from "./StyledHeader"
 
 
 
-export const Header = ()=>{
+export const Header = ({config})=>{
     return(
         <StyledMenu>
         Banner
