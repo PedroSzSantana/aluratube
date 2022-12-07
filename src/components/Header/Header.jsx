@@ -1,12 +1,12 @@
 
-import { StyledMenu } from "./StyledHeader"
+import { StyledBanner, StyledMenu } from "./StyledHeader"
 
 
 
 export const Header = ({config})=>{
     return(
         <StyledMenu>
-        Banner
+        <StyledBanner banner={config.banner}/>
         <section className="user-info">
             <img src={`https://github.com/${config.github}.png`} alt="" />
             <div>

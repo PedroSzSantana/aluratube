@@ -1,3 +1,4 @@
+import { CSSReset } from "../assets/CSSReset"
 import { Header } from "../components/Header/Header"
 import { Navbar } from "../components/Navbar/Navbar"
 import { Timeline } from "../components/Timeline/Timeline"
@@ -7,6 +8,7 @@ const HomePage = ()=>{
 
     return(
         <>
+            <CSSReset/>
             <Navbar/>
             <Header config={config}/>
             <Timeline config={config}/>
