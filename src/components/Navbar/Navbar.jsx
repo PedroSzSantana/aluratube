@@ -1,3 +1,4 @@
+import Switch from "react-switch"
 import Search from "./Search/Search"
 import { StyledMenu } from "./StyledNav"
 
@@ -9,6 +10,17 @@ export const Navbar = ()=>{
               <Logo/>
             </div>
             <Search/>
+            <Switch
+              onChange={()=>{}}
+              checked={false}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={25}
+              width={45}
+              handleDiameter={20}
+              onColor={'#333333'}
+              offColor={'#333333'}
+            />
         </StyledMenu>
         
     )

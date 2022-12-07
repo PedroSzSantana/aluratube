@@ -7,6 +7,8 @@ export const StyledMenu = styled.div`
         border-radius: 50%;
     }
     .user-info{
+        background-color: ${({theme})=> theme.backgroundLevel1};
+        color: ${({theme})=> theme.textColorBase};
         display: flex;
         align-items: center;
         width: 100%;

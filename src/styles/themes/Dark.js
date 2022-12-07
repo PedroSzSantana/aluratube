@@ -1,0 +1,8 @@
+const Dark = {
+    backgroundBase: '#181818',
+    backgroundLevel1 : '#202020',
+    backgroundLevel2 : '#313131',
+    borderBase : '#383838',
+    textColorBase : '#ffffff'
+}
+export default Dark

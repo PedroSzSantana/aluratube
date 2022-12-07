@@ -1,4 +1,4 @@
-import { CSSReset } from "../assets/CSSReset"
+import { CSSReset } from "../styles/CSSReset"
 import { Header } from "../components/Header/Header"
 import { Navbar } from "../components/Navbar/Navbar"
 import { Timeline } from "../components/Timeline/Timeline"

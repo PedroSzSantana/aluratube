@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const StyledTimeline = styled.div`
+  background-color: ${({theme})=> theme.backgroundLevel2};
+  color: ${({ theme }) => theme.textColorBase};
   flex: 1;
   width: 100%;
   padding: 16px;
-  overflow: hidden;
+  
+
   h2 {
     font-size: 16px;
     margin-bottom: 16px;
@@ -24,7 +27,7 @@ export const StyledTimeline = styled.div`
     overflow: hidden;
     padding: 16px;
     div {
-      
+      padding-bottom: 20px;
       width: calc(100vw - 16px * 4);
       display: grid;
       grid-gap: 16px;
@@ -39,7 +42,7 @@ export const StyledTimeline = styled.div`
           padding-top: 8px;
           display: block;
           padding-right: 24px;
-          color: ${({ theme }) => theme.textColorBase || "#222222"};
+          color: ${({ theme }) => theme.textColorBase};
         }
       }
     }

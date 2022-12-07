@@ -13,7 +13,7 @@ const Search = ()=>{
 
     return (
         <StyledSearch>
-            <input type="text" onChange={(e) => setSearchValue(e.target.value)} value={SearchValue} />
+            <input type="text" onChange={(e) => setSearchValue(e.target.value)} value={SearchValue} placeholder="Pesquisar"/>
             <button>
                 🔎
             </button>

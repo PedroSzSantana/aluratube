@@ -2,6 +2,7 @@
 import styled from "styled-components"
 
 export const StyledSearch = styled.div`
+  
   display: flex;
   flex-direction: row;
   border: 1px solid ${({ theme }) => theme.borderBase};

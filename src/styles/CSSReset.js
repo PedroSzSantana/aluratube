@@ -1,6 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
 export const CSSReset = createGlobalStyle`
+::-webkit-scrollbar{
+    height: 7px;
+}
+::-webkit-scrollbar-track{
+    
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    width: 10px;
+    background:#505050;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #333333;
+}
   /* Reset */
   * {
     margin: 0;
@@ -19,6 +33,8 @@ export const CSSReset = createGlobalStyle`
   body {
     display: flex;
     flex: 1;
+    overflow-x: hidden;
+    
   }
   #__next {
     display: flex;
