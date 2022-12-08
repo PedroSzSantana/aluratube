@@ -1,28 +1,19 @@
-import Switch from "react-switch"
+
+import { DarkModeSwitch } from "./DarkModeSwitch/DarkModeSwitch"
 import Search from "./Search/Search"
 import { StyledMenu } from "./StyledNav"
 
 
-export const Navbar = ()=>{
+export const Navbar = ({toggleTheme})=>{
+
     return(
         <StyledMenu>
             <div>
               <Logo/>
             </div>
             <Search/>
-            <Switch
-              onChange={()=>{}}
-              checked={false}
-              checkedIcon={false}
-              uncheckedIcon={false}
-              height={25}
-              width={45}
-              handleDiameter={20}
-              onColor={'#333333'}
-              offColor={'#333333'}
-            />
+            <DarkModeSwitch toggleTheme={toggleTheme}/>
         </StyledMenu>
-        
     )
 }
 function Logo() {

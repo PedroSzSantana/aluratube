@@ -3,13 +3,15 @@ import { Header } from "../components/Header/Header"
 import { Navbar } from "../components/Navbar/Navbar"
 import { Timeline } from "../components/Timeline/Timeline"
 import config from "../config.json"
+import { StyleScrollbar } from "../styles/Scrollbar"
 
-const HomePage = ()=>{
+const HomePage = ({toggleTheme})=>{
 
     return(
         <>
             <CSSReset/>
-            <Navbar/>
+            <StyleScrollbar/>
+            <Navbar toggleTheme={toggleTheme}/>
             <Header config={config}/>
             <Timeline config={config}/>
         </>

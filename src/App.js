@@ -6,13 +6,15 @@ import Light from "./styles/themes/Light";
 
 function App() {
   const [theme, setTheme] = useState(Dark);
+  
   const toggleTheme = ()=>{
-    setTheme(theme.title === 'Light' ? Dark : Light)
+    setTheme(theme === Light ? Dark : Light)
   }
+  
   return (
     
     <ThemeProvider theme={theme}>
-      <HomePage/>
+      <HomePage toggleTheme={toggleTheme}/>
     </ThemeProvider>
     
   );
