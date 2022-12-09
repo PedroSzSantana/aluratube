@@ -1,12 +1,17 @@
+import { createClient } from "@supabase/supabase-js"
 import { useState } from "react"
 import { StyledRegisterVideo } from "./StyledRegisterVideo"
+
+const getTumbinail = (url) => {
+    return `https://img.youtube.com/vi/${url.split("v=")[1]}/hqdefault.jpg`
+}
 
 const useForm = ()=>{
     const [values, setValues] = useState({ title: '', url: '' })
     return{
         values,
         handleChange: (e) => {
-            let value = e.target.value;
+            const value = e.target.value;
             const name = e.target.name
             setValues({
                 ...values,
@@ -17,6 +22,11 @@ const useForm = ()=>{
         }
     }
 }
+const PROJECT_URL = "https://qhgofqnzpsffrcwthczt.supabase.co"
+const PROJECT_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoZ29mcW56cHNmZnJjd3RoY3p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA2MDg3NjgsImV4cCI6MTk4NjE4NDc2OH0.Tz-cnYp-cK1wBKMzNmnPD5QMNaIs9eejb2VeOLs3vT4"
+const supabase = createClient(PROJECT_URL, PROJECT_KEY)
+
+
 export const RegisterVideo = () => {
     const [VisibleRegister, setVisibleRegister] = useState(false);
     
@@ -25,6 +35,19 @@ export const RegisterVideo = () => {
         e.preventDefault();
         setVisibleRegister(false);
         formCadastro.clearForm();
+
+        supabase.from("video").insert({
+            title: formCadastro.values.title,
+            url: formCadastro.values.url,
+            thumb: getTumbinail(formCadastro.values.url),
+            playlist: "jogos",
+        })
+        .then((response)=>{
+            console.log(response);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
     }
     return (
         <StyledRegisterVideo>
