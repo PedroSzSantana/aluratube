@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { pushVideos } from "../../assets/api"
+import { pushVideos } from "../../assets/services"
 import { StyledRegisterVideo } from "./StyledRegisterVideo"
 
 const getTumbinail = (url) => {
@@ -7,7 +7,7 @@ const getTumbinail = (url) => {
 }
 
 const useForm = ()=>{
-    const [values, setValues] = useState({ title: '', url: '', playlist: '' })
+    const [values, setValues] = useState({})
     return{
         values,
         handleChange: (e) => {
@@ -33,7 +33,6 @@ export const RegisterVideo = () => {
         setVisibleRegister(false);
         pushVideos(formCadastro,getTumbinail)
         formCadastro.clearForm();
-        
     }
     return (
         <StyledRegisterVideo>
@@ -63,13 +62,13 @@ export const RegisterVideo = () => {
 
                         <button type="submit">Cadastrar</button>
 
-                        <select onChange={formCadastro.handleChange}>
-                            <option value="jogos">Jogos</option>
+                        <select name="playlist" onChange={formCadastro.handleChange}>
+                            <option name="jogos" value="jogos">Jogos</option>
                             <option value="back-end">Back-End</option>
                             <option value="front-end">Front-End</option>
                         </select>
 
-                      <img src={getTumbinail(Thumbnail)} alt="" />  
+                      <img src={getTumbinail(Thumbnail)} alt="" />
                       
                     </div>
                     
