@@ -13,7 +13,7 @@ const HomePage = ({toggleTheme})=>{
             <StyleScrollbar/>
             <Navbar toggleTheme={toggleTheme}/>
             <Header config={config}/>
-            <Timeline config={config}/>
+            <Timeline/>
         </>
     )
 }

@@ -1,5 +1,5 @@
-import { createClient } from "@supabase/supabase-js"
 import { useState } from "react"
+import { pushVideos } from "../../assets/api"
 import { StyledRegisterVideo } from "./StyledRegisterVideo"
 
 const getTumbinail = (url) => {
@@ -7,7 +7,7 @@ const getTumbinail = (url) => {
 }
 
 const useForm = ()=>{
-    const [values, setValues] = useState({ title: '', url: '' })
+    const [values, setValues] = useState({ title: '', url: '', playlist: '' })
     return{
         values,
         handleChange: (e) => {
@@ -22,45 +22,33 @@ const useForm = ()=>{
         }
     }
 }
-const PROJECT_URL = "https://qhgofqnzpsffrcwthczt.supabase.co"
-const PROJECT_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoZ29mcW56cHNmZnJjd3RoY3p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA2MDg3NjgsImV4cCI6MTk4NjE4NDc2OH0.Tz-cnYp-cK1wBKMzNmnPD5QMNaIs9eejb2VeOLs3vT4"
-const supabase = createClient(PROJECT_URL, PROJECT_KEY)
-
 
 export const RegisterVideo = () => {
     const [VisibleRegister, setVisibleRegister] = useState(false);
+    const [Thumbnail, setThumbnail] = useState('')
     
     const formCadastro = useForm()
     const Submit = (e)=>{
         e.preventDefault();
         setVisibleRegister(false);
+        pushVideos(formCadastro,getTumbinail)
         formCadastro.clearForm();
-
-        supabase.from("video").insert({
-            title: formCadastro.values.title,
-            url: formCadastro.values.url,
-            thumb: getTumbinail(formCadastro.values.url),
-            playlist: "jogos",
-        })
-        .then((response)=>{
-            console.log(response);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+        
     }
     return (
         <StyledRegisterVideo>
             <button className="add-video" onClick={() => { setVisibleRegister(true) }}>
                 +
             </button>
-            {VisibleRegister ?
+            { VisibleRegister ?
                 (<form onSubmit={Submit}>
                     <div>
+                        
                         <button type="button" className="close-modal"
-                         onClick={() => { setVisibleRegister(false);}}>
+                         onClick={()=>{setVisibleRegister(false)}}>
                             X
                         </button>
+
                         <input type="text" placeholder="Titulo do Video"
                             name="title"
                             onChange={formCadastro.handleChange}
@@ -68,10 +56,23 @@ export const RegisterVideo = () => {
 
                         <input type="text" placeholder="URL"
                             name="url"
-                            onChange={formCadastro.handleChange}
+                            onChange={(e)=>{ 
+                                formCadastro.handleChange(e)
+                                setThumbnail(e.target.value)}}
                             value={formCadastro.values.url} />
+
                         <button type="submit">Cadastrar</button>
+
+                        <select onChange={formCadastro.handleChange}>
+                            <option value="jogos">Jogos</option>
+                            <option value="back-end">Back-End</option>
+                            <option value="front-end">Front-End</option>
+                        </select>
+
+                      <img src={getTumbinail(Thumbnail)} alt="" />  
+                      
                     </div>
+                    
                 </form>)
                 : null
             }

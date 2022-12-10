@@ -1,14 +1,22 @@
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { getVideos } from "../../assets/api"
 import { StyledTimeline } from "./StyledTimeline"
+import playlist from "../../playlist.json"
 
-export const Timeline = ({config})=>{
-    const playlistsName = Object.keys(config.playlists)
+export const Timeline = ()=>{
+    const [playlists, setPlaylists] = useState(playlist)
+    const playlistsName = Object.keys(playlists)
     const SearchValue = useSelector(state => state.search.SearchValue)
+    useEffect(()=>{
+        getVideos(playlists, setPlaylists)
+    },[])
+    
+    
     return(
         <StyledTimeline>
             { playlistsName.map((Nameplaylist)=> {
-                const Videos = config.playlists[Nameplaylist]
-
+                const Videos = playlists[Nameplaylist]
                 return(
                     <section key={Nameplaylist}>
                         <h2>{Nameplaylist}</h2>

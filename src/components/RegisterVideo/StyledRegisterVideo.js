@@ -55,6 +55,14 @@ export const StyledRegisterVideo = styled.div`
       padding: 16px;
       padding-top: 40px;
     }
+    select{
+      margin-top: 20px;
+      color: #ffff;
+      background: ${({ theme }) => theme.backgroundBase};
+    }
+    img{
+      margin-top: 30px;
+    }
   }
   input {
     border-radius: 2px;

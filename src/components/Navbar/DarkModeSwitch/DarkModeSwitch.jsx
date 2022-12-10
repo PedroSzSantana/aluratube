@@ -12,8 +12,8 @@ export const DarkModeSwitch = ({toggleTheme})=> {
         <Switch
         onChange={()=>{toggleTheme();CheckedSwitch()}}
         checked={checked}
-        checkedIcon={'🌙'}
-        uncheckedIcon={'☀️'}
+        checkedIcon={true}
+        uncheckedIcon={true}
         height={25}
         width={45}
         handleDiameter={20}
