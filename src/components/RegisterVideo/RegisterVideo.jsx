@@ -68,8 +68,8 @@ export const RegisterVideo = () => {
 
                         <select name="playlist" onChange={formCadastro.handleChange}>
                             <option value="jogos">Jogos</option>
-                            <option value="back-end">Back-End</option>
                             <option value="front-end">Front-End</option>
+                            <option value="back-end">Back-End</option>
                         </select>
 
                         <img src={getTumbinail(Thumbnail)} alt="" />
