@@ -35,7 +35,7 @@ export const RegisterVideo = () => {
         setVisibleRegister(false);
         pushVideos(formCadastro, getTumbinail)
         formCadastro.clearForm();
-        window.location.reload()
+        window.location.reload();
     }
     return (
         <StyledRegisterVideo>

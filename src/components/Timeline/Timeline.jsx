@@ -29,7 +29,7 @@ export const Timeline = () => {
                                 return titleNormalized.includes(SearchValueNormalized)
                             }).map((video) => {
                                 return (
-                                    <a href={video.url}>
+                                    <a key={video.url} href={video.url}>
                                         <img src={video.thumb} alt="" />
                                         <span>{video.title}</span>
                                     </a>
