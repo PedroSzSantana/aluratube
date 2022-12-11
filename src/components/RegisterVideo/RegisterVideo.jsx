@@ -6,9 +6,10 @@ const getTumbinail = (url) => {
     return `https://img.youtube.com/vi/${url.split("v=")[1]}/hqdefault.jpg`
 }
 
-const useForm = ()=>{
+const useForm = () => {
     const [values, setValues] = useState({})
-    return{
+
+    return {
         values,
         handleChange: (e) => {
             const value = e.target.value;
@@ -16,22 +17,23 @@ const useForm = ()=>{
             setValues({
                 ...values,
                 [name]: value,
-            })},
-        clearForm: ()=>{
+            })
+        },
+        clearForm: () => {
             setValues({})
         }
     }
 }
 
 export const RegisterVideo = () => {
+
     const [VisibleRegister, setVisibleRegister] = useState(false);
     const [Thumbnail, setThumbnail] = useState('')
-    
+
     const formCadastro = useForm()
-    const Submit = (e)=>{
-        e.preventDefault();
+    const Submit = () => {
         setVisibleRegister(false);
-        pushVideos(formCadastro,getTumbinail)
+        pushVideos(formCadastro, getTumbinail)
         formCadastro.clearForm();
     }
     return (
@@ -39,12 +41,12 @@ export const RegisterVideo = () => {
             <button className="add-video" onClick={() => { setVisibleRegister(true) }}>
                 +
             </button>
-            { VisibleRegister ?
+            {VisibleRegister ?
                 (<form onSubmit={Submit}>
                     <div>
-                        
+
                         <button type="button" className="close-modal"
-                         onClick={()=>{setVisibleRegister(false)}}>
+                            onClick={() => { setVisibleRegister(false) }}>
                             X
                         </button>
 
@@ -55,23 +57,24 @@ export const RegisterVideo = () => {
 
                         <input type="text" placeholder="URL"
                             name="url"
-                            onChange={(e)=>{ 
+                            onChange={(e) => {
                                 formCadastro.handleChange(e)
-                                setThumbnail(e.target.value)}}
+                                setThumbnail(e.target.value)
+                            }}
                             value={formCadastro.values.url} />
 
                         <button type="submit">Cadastrar</button>
 
                         <select name="playlist" onChange={formCadastro.handleChange}>
-                            <option name="jogos" value="jogos">Jogos</option>
+                            <option value="jogos">Jogos</option>
                             <option value="back-end">Back-End</option>
                             <option value="front-end">Front-End</option>
                         </select>
 
-                      <img src={getTumbinail(Thumbnail)} alt="" />
-                      
+                        <img src={getTumbinail(Thumbnail)} alt="" />
+
                     </div>
-                    
+
                 </form>)
                 : null
             }
