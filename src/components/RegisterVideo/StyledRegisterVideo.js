@@ -57,7 +57,7 @@ export const StyledRegisterVideo = styled.div`
     }
     select{
       margin-top: 20px;
-      color: #ffff;
+      color: ${({ theme }) => theme.textColorBase};
       background: ${({ theme }) => theme.backgroundBase};
     }
     img{
