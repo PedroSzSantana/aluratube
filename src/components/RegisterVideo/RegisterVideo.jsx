@@ -32,7 +32,9 @@ export const RegisterVideo = () => {
 
     const formCadastro = useForm()
     const Submit = () => {
+        window.location.reload()
         setVisibleRegister(false);
+
         pushVideos(formCadastro, getTumbinail)
         formCadastro.clearForm();
     }
