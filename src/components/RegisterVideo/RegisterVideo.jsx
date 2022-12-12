@@ -9,58 +9,76 @@ const getTumbinail = (url) => {
 
 const useForm = () => {
     const [values, setValues] = useState({ title: "", url: "", playlist: "jogos" })
+    const [touched, setTouchedFields] = useState({});
+    const [erro, setErro] = useState({})
 
+    function handleBlur(event) {
+        const fieldName = event.target.name;
+        console.log(fieldName);
+        setTouchedFields({
+            ...touched,
+            [fieldName]: true,
+        })
+    }
+    const handleChange = (e) => {
+        const value = e.target.value;
+        const name = e.target.name
+        const newValues = {
+            ...values,
+            [name]: value,
+        }
+        setValues(newValues)
+    }
+    useEffect(() => {
+        validateValues(values)
+    }, [values])
+
+    const validateValues = (values) => {
+            setErro(validate(values))
+        }
+    const validate = (values) => {
+        const erro = {}
+        if (!values.url.includes("www.youtube.com/watch?v=")) {
+            erro.url = true
+        } else erro.url = false
+
+        if (values.title === "") {
+            erro.title = true
+        } else erro.title = false
+
+        return erro
+    }
     return {
         values,
-        handleChange: (e) => {
-            const value = e.target.value;
-            const name = e.target.name
-            const newValues = {
-                ...values,
-                [name]: value,
-            }
-            setValues(newValues)
-        },
+        handleChange,
         clearForm: () => {
             setValues({})
         },
+        erro,
+        handleBlur,
+        touched
     }
 }
-const validate = (values) => {
-    const erro = {}
-    if (!values.url.includes("www.youtube.com")) {
-        erro.url = true
-    }else erro.url = false
-
-    if (values.title === "") {
-        erro.title = true
-    }else erro.title = false
-
-    return erro
-}
-
 export const RegisterVideo = () => {
-    const [erro, setErro] = useState({})
+
+    
     const [VisibleRegister, setVisibleRegister] = useState(false);
     const [Thumbnail, setThumbnail] = useState('')
     const formCadastro = useForm()
 
-    const validateValues = (values) => {
-        setErro(validate(values))
-    }
-    useEffect(() =>{
-        validateValues(formCadastro.values)
-
-    },[formCadastro.values])
+    
+    
     const Submit = (e) => {
         e.preventDefault()
-        if(erro.url === false && erro.title === false){
+        if (formCadastro.erro.url === false && formCadastro.erro.title === false) {
             setVisibleRegister(false);
             pushVideos(formCadastro, getTumbinail)
             formCadastro.clearForm();
             window.location.reload();
-        } 
+        }
     }
+
+
     return (
         <StyledRegisterVideo>
             <button className="add-video" onClick={() => { setVisibleRegister(true) }}>
@@ -74,7 +92,7 @@ export const RegisterVideo = () => {
                             X
                         </button>
 
-                        <InputsUi formCadastro={formCadastro} setThumbnail={setThumbnail} erro={erro}/>
+                        <InputsUi formCadastro={formCadastro} setThumbnail={setThumbnail}/>
 
                         <img src={getTumbinail(Thumbnail)} alt="" />
 
@@ -87,4 +105,3 @@ export const RegisterVideo = () => {
         </StyledRegisterVideo>
     )
 }
-

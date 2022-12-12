@@ -1,23 +1,24 @@
 import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material"
 import { StyledInput } from "./StyleInputs"
 
-export const InputsUi = ({formCadastro, setThumbnail, erro}) => {
+export const InputsUi = ({formCadastro, setThumbnail}) => {
 
     return (
         <StyledInput>
             <TextField
-                error={erro.title}
-                helperText={erro.title === true ? "Por favor preencha o campo do titulo" : ""}
+                error={formCadastro.touched.title && formCadastro.erro.title}
+                helperText={formCadastro.touched.title && formCadastro.erro.title === true ? "Por favor preencha o campo do titulo" : ""}
                 id="filled-basic"
                 label="Titulo"
                 variant="filled"
                 name="title"
+                onBlur={formCadastro.handleBlur}
                 onChange={formCadastro.handleChange}
                 value={formCadastro.values.title}
             />
             <TextField
-                error={erro.url}
-                helperText={erro.url === true ? "Por favor somente url do youtube" : ""}
+                error={formCadastro.touched.url && formCadastro.erro.url}
+                helperText={formCadastro.touched.url && formCadastro.erro.url === true ? "Preencha com uma URL do youtube" : ""}
                 id="filled-basic"
                 label="URL"
                 variant="filled"
@@ -26,6 +27,7 @@ export const InputsUi = ({formCadastro, setThumbnail, erro}) => {
                     formCadastro.handleChange(e)
                     setThumbnail(e.target.value)
                 }}
+                onBlur={formCadastro.handleBlur}
                 value={formCadastro.values.url} />
             <div>
 

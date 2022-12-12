@@ -5,7 +5,7 @@ export const StyledInput = styled.div`
   .MuiFilledInput-root{
     color: ${({ theme }) => theme.textColorBase};
     background: ${({ theme }) => theme.backgroundBase};
-    margin-bottom  :10px;
+    margin-bottom  :15px;
   }
   .css-e4w4as-MuiFormLabel-root-MuiInputLabel-root{
     color: ${({ theme }) => theme.textColorBase} !important;
@@ -16,4 +16,5 @@ export const StyledInput = styled.div`
   .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
     background: ${({ theme }) => theme.backgroundBase};
   }
+  
     `
