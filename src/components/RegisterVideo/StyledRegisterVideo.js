@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const StyledRegisterVideo = styled.div`
@@ -54,25 +55,15 @@ export const StyledRegisterVideo = styled.div`
       position: relative;
       padding: 16px;
       padding-top: 40px;
-    }
-    select{
-      margin-top: 20px;
-      color: ${({ theme }) => theme.textColorBase};
-      background: ${({ theme }) => theme.backgroundBase};
+
+      div{
+       width: 100%; 
+      }
     }
     img{
       margin-top: 30px;
+      margin-bottom: 30px;
     }
   }
-  input {
-    border-radius: 2px;
-    border: 1px solid ${({ theme }) => theme.borderBase};
-    padding: 8px 10px;
-    margin-bottom: 10px;
-    outline: none;
-    color: #222222;
-    background-color: #f9f9f9;
-    color: ${({ theme }) => theme.textColorBase};
-    background-color: ${({ theme }) => theme.backgroundBase};
-  }
 `;
+

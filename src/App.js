@@ -6,7 +6,7 @@ import Dark from "./styles/themes/Dark";
 import Light from "./styles/themes/Light";
 
 function App() {
-  const [theme, setTheme] = useState(Dark);
+  const [theme, setTheme] = useState(Light);
   
   const toggleTheme = ()=>{
     setTheme(theme === Light ? Dark : Light)

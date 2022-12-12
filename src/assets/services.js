@@ -5,19 +5,21 @@ const PROJECT_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(PROJECT_URL, PROJECT_KEY)
 
 export const pushVideos = (formCadastro, getTumbinail) => {
-    supabase.from("video").insert({
-        title: formCadastro.values.title,
-        url: formCadastro.values.url,
-        thumb: getTumbinail(formCadastro.values.url),
-        playlist: formCadastro.values.playlist
-    })
-        .then((response) => {
-            console.log(response);
+ 
+        supabase.from("video").insert({
+            title: formCadastro.values.title,
+            url: formCadastro.values.url,
+            thumb: getTumbinail(formCadastro.values.url),
+            playlist: formCadastro.values.playlist
         })
-        .catch((error) => {
-            console.log(error);
-        })
-}
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+    }
 
 
 export const getVideos = (playlists, setstate) => {
